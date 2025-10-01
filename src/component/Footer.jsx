@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
-import { Phone, MapPin, Mail, Send, Facebook, Linkedin, MessageCircle, Youtube } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Phone,
+  MapPin,
+  Mail,
+  Send,
+  Facebook,
+  Linkedin,
+  MessageCircle,
+  Youtube,
+} from "lucide-react";
 
 export default function EdukaFooter() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -19,8 +28,7 @@ export default function EdukaFooter() {
     <footer className="bg-[#012758] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
@@ -32,30 +40,34 @@ export default function EdukaFooter() {
               </span>
             </div>
             <p className="text-blue-200 mb-8 leading-relaxed">
-              We are many variations of passages available but the majority have suffered alteration in some form by injected humour words believable.
+              We are many variations of passages available but the majority have
+              suffered alteration in some form by injected humour words
+              believable.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-blue-100">+2 123 654 7898</span>
+                <span className="text-blue-100">+91 639 100 0692</span>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-blue-100">25/B Milford Road, New York</span>
+                <span className="text-blue-100">
+                  Lucknow Road, Balpur Jat - Gonda (U.P.)
+                </span>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-blue-100">info@example.com</span>
+                <span className="text-blue-100">rosewoodinternationalschools@gmail.com</span>
               </div>
             </div>
           </div>
@@ -68,17 +80,20 @@ export default function EdukaFooter() {
             </h3>
             <ul className="space-y-3">
               {[
-                'About Us',
-                'FAQ\'s',
-                'Testimonials',
-                'Terms Of Service',
-                'Privacy policy',
-                'Update News'
+                { name: "About Us", href: "/about-us" },
+                { name: "Mission & Vision", href: "/about/vision-mission" },
+                { name: "Activities", href: "/academics/activities" },
+                { name: "Facilities", href: "/academics/facilities" },
+                { name: "Admissions", href: "/admissions" },
+                { name: "Gallery", href: "/gallery" },
               ].map((link, index) => (
                 <li key={index}>
-                  <a href="/about-us" className="text-blue-200 hover:text-orange-400 transition-colors duration-200 flex items-center group">
+                  <a
+                    href={link.href}
+                    className="text-blue-200 hover:text-orange-400 transition-colors duration-200 flex items-center group"
+                  >
                     <span className="w-2 h-2 bg-orange-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-200"></span>
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -86,7 +101,7 @@ export default function EdukaFooter() {
           </div>
 
           {/* Our Campus */}
-          <div className="lg:col-span-1">
+          {/* <div className="lg:col-span-1">
             <h3 className="text-xl font-semibold mb-6 relative">
               Our Campus
               <div className="absolute -bottom-2 left-0 w-12 h-1 bg-orange-400 rounded"></div>
@@ -108,7 +123,7 @@ export default function EdukaFooter() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Enquiry Form (replaced Newsletter) */}
           <div className="lg:col-span-1">
@@ -157,9 +172,11 @@ export default function EdukaFooter() {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             {/* Copyright */}
             <div className="text-blue-200 text-center sm:text-left">
-              © Copyright 2025 <span className="text-orange-400 font-semibold">rOsewd</span> All Rights Reserved.
+              © Copyright 2025{" "}
+              <span className="text-orange-400 font-semibold">rOsewd</span> All
+              Rights Reserved.
             </div>
-            
+
             {/* Social Icons */}
             <div className="flex space-x-3">
               <a

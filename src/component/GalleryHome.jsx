@@ -3,9 +3,9 @@ import { ArrowRight } from "lucide-react"; // ✅ using lucide-react for arrow i
 
 const GalleryHome = () => {
   const images = [
-    "/images/G1.jpg",
-    "/images/G2.jpg",
-    "/images/G7.jpg",
+    "/images/gal3.png",
+    "/images/gal20.jpg",
+    "/images/gal4.png",
   ];
 
   return (
@@ -38,10 +38,10 @@ const GalleryHome = () => {
               className="w-full h-60 object-cover transform transition-transform duration-500 group-hover:scale-110"
             />
 
-            {/* Orange Overlay with Plus Icon */}
+            {/* Orange Overlay with Plus Icon
             <div className="absolute inset-0 bg-orange-500 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <span className="text-white text-5xl font-bold">+</span>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
@@ -52,7 +52,7 @@ const GalleryHome = () => {
           href="/gallery" // 🔹 Replace with your actual gallery route
           className="flex items-center gap-2 px-6 py-3 bg-orange-500 text-white font-semibold rounded-md shadow-md hover:bg-orange-600 transition-all duration-300"
         >
-          View All Facilities
+          View All 
           <ArrowRight className="w-5 h-5" />
         </a>
       </div>

@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Home, ChevronRight } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle,
+  Home,
+  ChevronRight,
+} from "lucide-react";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -14,33 +23,33 @@ const ContactPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: "",
       }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone.replace(/[^\d]/g, ''))) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number';
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10}$/.test(formData.phone.replace(/[^\d]/g, ""))) {
+      newErrors.phone = "Please enter a valid 10-digit phone number";
     }
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    if (!formData.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   };
 
@@ -51,10 +60,10 @@ const ContactPage = () => {
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: ''
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
         });
       }, 3000);
     } else {
@@ -65,33 +74,32 @@ const ContactPage = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone',
-      details: ['+91 639 100 0692'],
-      color: 'text-green-600'
+      title: "Phone",
+      details: ["+91 639 100 0692"],
+      color: "text-green-600",
     },
     {
       icon: Mail,
-      title: 'Email',
-      details: ['rosewoodinternationalschools@gmail.com'],
-      color: 'text-blue-600'
+      title: "Email",
+      details: ["rosewoodinternationalschools@gmail.com"],
+      color: "text-blue-600",
     },
     {
       icon: MapPin,
-      title: 'Address',
-      details: ['Lucknow Road, Balpur Jat - Gonda (U.P.)'],
-      color: 'text-red-600'
+      title: "Address",
+      details: ["Lucknow Road, Balpur Jat - Gonda (U.P.)"],
+      color: "text-red-600",
     },
     {
       icon: Clock,
-      title: 'Office Hours',
-      details: ['Mon - Sat: 8:00 AM - 4:00 PM'],
-      color: 'text-purple-600'
-    }
+      title: "Office Hours",
+      details: ["Mon - Sat: 8:00 AM - 4:00 PM"],
+      color: "text-purple-600",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-
       {/* 🔹 Banner Section */}
       <section className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] w-full overflow-hidden">
         <div
@@ -124,7 +132,10 @@ const ContactPage = () => {
           </div>
 
           {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm sm:text-base" aria-label="Breadcrumb">
+          <nav
+            className="flex items-center space-x-2 text-sm sm:text-base"
+            aria-label="Breadcrumb"
+          >
             <ol className="flex items-center space-x-2">
               <li className="flex items-center">
                 <a
@@ -140,7 +151,10 @@ const ContactPage = () => {
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
               </li>
               <li className="flex items-center">
-                <span className="text-orange-400 font-semibold" aria-current="page">
+                <span
+                  className="text-orange-400 font-semibold"
+                  aria-current="page"
+                >
                   Contact Us
                 </span>
               </li>
@@ -163,40 +177,38 @@ const ContactPage = () => {
           {/* Left Column - Contact Info */}
           <div className="space-y-8">
             <div className="flex flex-col gap-2">
-  {contactInfo.map((info, index) => {
-    const IconComponent = info.icon;
-    return (
-      <div
-        key={index}
-        className="bg-white flex items-center gap-3 rounded-xl shadow-lg p-2 hover:shadow-xl transition-shadow duration-300"
-      >
-        <div className="flex items-center mb-4">
-          <div className={`p-3 rounded-full ${info.color} flex gap-x-3 items-center bg-opacity-10`}>
-            <div className='flex gap-x-2'>
-
-            <IconComponent className={`w-6 h-6 ${info.color}`} />
-          <h3 className="text-lg font-semibold text-gray-900">
-            {info.title}
-          </h3>
+              {contactInfo.map((info, index) => {
+                const IconComponent = info.icon;
+                return (
+                  <div
+                    key={index}
+                    className="bg-white flex items-center gap-3 rounded-xl shadow-lg p-2 hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="flex items-center mb-4">
+                      <div
+                        className={`p-3 rounded-full ${info.color} flex gap-x-3 items-center bg-opacity-10`}
+                      >
+                        <div className="flex gap-x-2">
+                          <IconComponent className={`w-6 h-6 ${info.color}`} />
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {info.title}
+                          </h3>
+                        </div>
+                        {info.details.map((detail, idx) => (
+                          <p
+                            key={idx}
+                            className="text-gray-600 text-md break-words" // ✅ fixes overflow
+                          >
+                            {detail}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    <div className=""></div>
+                  </div>
+                );
+              })}
             </div>
-          {info.details.map((detail, idx) => (
-            <p
-              key={idx}
-              className="text-gray-600 text-md break-words" // ✅ fixes overflow
-            >
-              {detail}
-            </p>
-          ))}
-          </div>
-        </div>
-        <div className="">
-          
-        </div>
-      </div>
-    );
-  })}
-</div>
-
 
             {/* Google Map */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -208,7 +220,7 @@ const ContactPage = () => {
               </div>
               <div className="relative h-64 md:h-80">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98731668459391!3d40.74844097932681"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d80.3303!3d26.4499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z26LCq26LCq!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -224,21 +236,33 @@ const ContactPage = () => {
           {/* Right Column - Form */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Send us a Message</h2>
-              <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                Send us a Message
+              </h2>
+              <p className="text-gray-600">
+                Fill out the form below and we'll get back to you as soon as
+                possible.
+              </p>
             </div>
 
             {isSubmitted && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
                 <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
-                <p className="text-green-700">Thank you! Your message has been sent successfully.</p>
+                <p className="text-green-700">
+                  Thank you! Your message has been sent successfully.
+                </p>
               </div>
             )}
 
             <div className="space-y-6">
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Full Name *
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -246,16 +270,23 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
+                    errors.name ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Enter your full name"
                 />
-                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                )}
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Email Address *
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -263,16 +294,23 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                    errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Enter your email address"
                 />
-                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Phone Number *
+                </label>
                 <input
                   type="tel"
                   id="phone"
@@ -280,16 +318,23 @@ const ContactPage = () => {
                   value={formData.phone}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                    errors.phone ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Enter your phone number"
                 />
-                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                )}
               </div>
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Message *
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -297,11 +342,13 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 resize-none ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
+                    errors.message ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Enter your message here..."
                 ></textarea>
-                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                )}
               </div>
 
               {/* Submit */}
@@ -329,30 +376,38 @@ const ContactPage = () => {
         {/* Additional Info */}
         <div className="mt-12 bg-white rounded-xl shadow-lg p-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Visit Our Campus</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Visit Our Campus
+            </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              We welcome visitors to our campus. Please feel free to schedule a tour or visit us during our office hours. 
-              Our friendly staff will be happy to show you around and answer any questions about our programs and facilities.
+              We welcome visitors to our campus. Please feel free to schedule a
+              tour or visit us during our office hours. Our friendly staff will
+              be happy to show you around and answer any questions about our
+              programs and facilities.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="p-4">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full mb-3">
                 <Phone className="w-6 h-6" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
-              <p className="text-gray-600 text-sm">Available during office hours</p>
+              <p className="text-gray-600 text-sm">
+                Available during office hours
+              </p>
             </div>
-            
+
             <div className="p-4">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-full mb-3">
                 <Mail className="w-6 h-6" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
-              <p className="text-gray-600 text-sm">We'll respond within 24 hours</p>
+              <p className="text-gray-600 text-sm">
+                We'll respond within 24 hours
+              </p>
             </div>
-            
+
             <div className="p-4">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-full mb-3">
                 <MapPin className="w-6 h-6" />

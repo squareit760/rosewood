@@ -123,7 +123,7 @@ const Navbar = () => {
               </div>
               <div className="hidden lg:flex items-center space-x-2">
                 <Phone size={16} className="text-yellow-300" />
-                <a href="tel:+916391000692">+916391000692</a>
+                <a href="tel:+916391000692">+91 639 100 0692</a>
               </div>
             </div>
           </div>

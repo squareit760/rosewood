@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const faqs = [
   {
-    question: "How Can do I apply ?",
+    question: "How can I apply for admission?",
     answer:
-      "We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment so blinded by desire ante odio dignissim quam vitae pulvinar turpis.",
+      "Parents can collect the admission form from the school office or apply online through our website. Entrance tests may be conducted for certain classes.",
   },
   {
-    question: "How Can I Become A Member ?",
+    question: "How can parents communicate with teachers?",
     answer:
-      "To become a member, simply register through our admission portal and follow the instructions provided by the school office.",
+      "Parents can reach out during Parent-Teacher Meetings (PTMs) or schedule appointments with teachers. Regular updates are also shared through our school app/portal.",
   },
   {
-    question: "What Payment Gateway You Support ?",
+    question: "How does the school ensure the safety of students?",
     answer:
-      "We support secure online payment gateways including credit card, debit card, UPI, and net banking.",
+      "Our campus is equipped with CCTV surveillance, trained security staff, and a well-structured safety protocol to ensure the security of every child.",
   },
   {
     question: "How Can I Cancel My Request ?",
@@ -61,9 +62,12 @@ export default function FAQSection() {
             quae ab illo inventore veritatis et quasi architecto.
           </p>
 
-          <button className="bg-orange-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-orange-600 transition">
-            HAVE ANY QUESTION ?
-          </button>
+          {/* Contact Button */}
+          <Link to="/contact">
+            <button className="bg-orange-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-orange-600 transition">
+              HAVE ANY QUESTION ?
+            </button>
+          </Link>
         </div>
 
         {/* Right Accordion */}
