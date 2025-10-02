@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { ref, push } from "firebase/database";
 import { database } from "../../firebase"; // adjust path if needed
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function EdukaFooter() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -47,59 +47,28 @@ export default function EdukaFooter() {
     <footer className="bg-[#012758] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
-                <div className="w-5 h-5 bg-white rounded transform rotate-12"></div>
-              </div>
-              <span className="text-2xl font-bold">
-                rOse<span className="text-orange-400">wd</span>
-              </span>
+              <img
+                src="/images/logo.webp"
+                className="bg-white w-30 h-24 object-cover"
+                alt=""
+              />
             </div>
             <p className="text-blue-200 mb-8 leading-relaxed">
-              We are many variations of passages available but the majority have
-              suffered alteration in some form by injected humour words
-              believable.
+              At Rosewood International School, we are more than educators—we
+              are mentors committed to holistic growth. Our dedicated faculty
+              fosters academic excellence through innovative programs that
+              nurture creativity and critical thinking.
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-white" />
-                </div>
-                <a href="tel:+916391000692" className="text-blue-100">
-                  +91 63910 00692
-                </a>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-white" />
-                </div>
-                <a
-                  href="mailto:rosewoodinternationalschools@gmail.com"
-                  className="text-blue-100"
-                >
-                  rosewoodinternationalschools@gmail.com
-                </a>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-blue-100">
-                  Lucknow Road, Balpur Jat - Gonda (U.P.)
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 lg:ml-12">
             <h3 className="text-xl font-semibold mb-6 relative">
               Quick Links
               <div className="absolute -bottom-2 left-0 w-12 h-1 bg-orange-400 rounded"></div>
@@ -114,16 +83,56 @@ export default function EdukaFooter() {
                 { name: "Gallery", href: "/gallery" },
               ].map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-blue-200 hover:text-orange-400 transition-colors duration-200 flex items-center group"
                   >
                     <span className="w-2 h-2 bg-orange-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-200"></span>
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Contact us */}
+          {/* Contact us */}
+          <div className="lg:col-span-1 lg:ml-12">
+            <h3 className="text-xl font-semibold mb-6 relative">
+              Contact Us
+              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-orange-400 rounded"></div>
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
+                <a href="tel:+916391000692" className="text-blue-100 truncate">
+                  +91 63910 00692
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <a
+                  href="mailto:rosewoodinternationalschools@gmail.com"
+                  className="text-blue-100 truncate"
+                >
+                  rosewoodinternationalschools@gmail.com
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-blue-100 text-start">
+                  Lucknow Road, Balpur <br /> Jat, Gonda, Uttar Pradesh 271001
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Our Campus */}
@@ -194,13 +203,26 @@ export default function EdukaFooter() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-blue-700 mt-12 pt-8">
+        <div className="border-t border-blue-700 mt-3 pt-2">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             {/* Copyright */}
             <div className="text-blue-200 text-center sm:text-left">
               © Copyright 2025{" "}
               <span className="text-orange-400 font-semibold">Rosewood</span>{" "}
               All Rights Reserved.
+            </div>
+
+            {/* Design By */}
+            <div className="text-blue-200 text-sm text-center">
+              Design by:{" "}
+              <a
+                href="https://www.squareit.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-400 hover:text-orange-500 text-sm underline"
+              >
+                www.squareit.in
+              </a>
             </div>
 
             {/* Social Icons */}
@@ -217,12 +239,6 @@ export default function EdukaFooter() {
               >
                 <FaInstagram className="w-5 h-5" />
               </a>
-              {/* <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"
-              >
-                <MessageCircle className="w-5 h-5" />
-              </a> */}
               <a
                 href="https://www.youtube.com/@rosewoodintercollegegonda1459"
                 className="w-10 h-10 bg-white/10 hover:bg-red-600 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"

@@ -12,7 +12,7 @@ import {
 import { ref, push } from "firebase/database";
 import { database } from "../../firebase"; // ✅ adjust import path if needed
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -159,14 +159,14 @@ const ContactPage = () => {
           >
             <ol className="flex items-center space-x-2">
               <li className="flex items-center">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
                   aria-label="Go to homepage"
                 >
                   <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
                   <span className="font-medium">Home</span>
-                </a>
+                </Link>
               </li>
               <li className="flex items-center">
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />

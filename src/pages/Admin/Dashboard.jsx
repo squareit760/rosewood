@@ -1,6 +1,6 @@
 // src/pages/AdminTable.jsx
 import React, { useEffect, useState } from "react";
-import { database, auth } from "../firebase";
+import { database, auth } from "../../../firebase";
 import { ref, onValue, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
@@ -10,25 +10,41 @@ const Dashboard = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        navigate("/login");
-      }
+      if (!user) navigate("/login");
     });
 
-    const dbRef = ref(database, "popupEnquiries");
-    onValue(dbRef, (snapshot) => {
-      const records = snapshot.val();
-      const formatted = records
-        ? Object.entries(records)
-            .map(([id, values]) => ({
+    const fetchData = async () => {
+      const sources = ["popupEnquiries", "footerEnquiries", "contactEnquiries"];
+      const allData = [];
+
+      sources.forEach((source) => {
+        const dbRef = ref(database, source);
+        onValue(dbRef, (snapshot) => {
+          const records = snapshot.val();
+          if (records) {
+            const formatted = Object.entries(records).map(([id, values]) => ({
               id,
-              ...values,
-            }))
-            .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0)) // 🟢 newest first
-        : [];
-      setData(formatted);
-    });
+              source: source.replace("Enquiries", ""), // popup, footer, contact
+              message: values.message || "N/A", // handle missing message
+              name: values.name || "N/A",
+              email: values.email || "N/A",
+              mobile: values.mobile || values.phone || "N/A",
+              timestamp: values.timestamp || 0,
+            }));
+            setData((prev) => {
+              // Merge new entries and remove duplicates
+              const merged = [
+                ...prev.filter((d) => d.source !== source),
+                ...formatted,
+              ];
+              return merged.sort((a, b) => b.timestamp - a.timestamp);
+            });
+          }
+        });
+      });
+    };
 
+    fetchData();
     return () => unsubscribe();
   }, [navigate]);
 
@@ -41,20 +57,6 @@ const Dashboard = () => {
     }
   };
 
-  // const handleDelete = async (entryId) => {
-  //   const confirmDelete = window.confirm(
-  //     "Are you sure you want to delete this record?"
-  //   );
-  //   if (!confirmDelete) return;
-
-  //   try {
-  //     await remove(ref(database, `popupEnquiries/${entryId}`));
-  //     setData((prev) => prev.filter((item) => item.id !== entryId));
-  //   } catch (error) {
-  //     console.error("Failed to delete entry:", error.message);
-  //   }
-  // };
-
   const logToGoogleSheet = async (entry) => {
     const sheetURL =
       "https://script.google.com/macros/s/AKfycbxY8vgBQyds6j_CoRHjhqAB3givsZx9HQNr_brW3LnsOFsChhq07dGC2P-32WXcsV5X/exec";
@@ -65,8 +67,8 @@ const Dashboard = () => {
       mobile: entry.mobile,
       id: entry.id,
       status: "Deleted by admin",
+      source: entry.source,
     };
-    console.log("Sending to Google Sheet", payload);
 
     try {
       await fetch(sheetURL, {
@@ -81,6 +83,7 @@ const Dashboard = () => {
       console.error("Google Sheet logging failed ❌", error);
     }
   };
+
   const handleDelete = async (entryId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this record?"
@@ -91,11 +94,8 @@ const Dashboard = () => {
     if (!deletedEntry) return;
 
     try {
-      // 🔄 Log to Google Sheet before deletion
       await logToGoogleSheet(deletedEntry);
-
-      // 🔄 Delete from Firebase
-      await remove(ref(database, `popupEnquiries/${entryId}`));
+      await remove(ref(database, `${deletedEntry.source}Enquiries/${entryId}`));
       setData((prev) => prev.filter((item) => item.id !== entryId));
     } catch (error) {
       console.error("Failed to delete entry or log:", error.message);
@@ -104,10 +104,10 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8">
-      <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
         <div className="p-6 border-b flex items-center justify-between">
           <h2 className="text-2xl font-bold text-blue-600">
-            Contact Submissions
+            All Enquiries Dashboard
           </h2>
           <button
             onClick={handleLogout}
@@ -116,25 +116,30 @@ const Dashboard = () => {
             Logout
           </button>
         </div>
+
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto text-sm">
             <thead className="bg-blue-500 text-white">
               <tr>
-                <th className="px-4 py-3 text-left">Id</th>
+                <th className="px-4 py-3 text-left">#</th>
                 <th className="px-4 py-3 text-left">Name</th>
                 <th className="px-4 py-3 text-left">Email</th>
                 <th className="px-4 py-3 text-left">Mobile</th>
+                <th className="px-4 py-3 text-left">Message</th>
+                <th className="px-4 py-3 text-left">Source</th>
                 <th className="px-4 py-3 text-left">Date/Time</th>
                 <th className="px-4 py-3 text-left">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {data.map((entry, id) => (
+              {data.map((entry, index) => (
                 <tr key={entry.id}>
-                  <td className="px-4 py-2">{id + 1}</td>
+                  <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">{entry.name}</td>
                   <td className="px-4 py-2">{entry.email}</td>
                   <td className="px-4 py-2">{entry.mobile}</td>
+                  <td className="px-4 py-2">{entry.message}</td>
+                  <td className="px-4 py-2">{entry.source}</td>
                   <td className="px-4 py-2">
                     {entry.timestamp
                       ? new Date(entry.timestamp).toLocaleString("en-IN")
@@ -153,7 +158,7 @@ const Dashboard = () => {
               {data.length === 0 && (
                 <tr>
                   <td
-                    colSpan="6"
+                    colSpan="8"
                     className="text-center px-4 py-6 text-gray-500"
                   >
                     No submissions found.

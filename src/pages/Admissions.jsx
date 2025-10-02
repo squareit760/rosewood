@@ -2,6 +2,7 @@ import React from "react";
 import { Home, ChevronRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import FAQSection from "../component/academics/FAQSection";
+import { Link } from "react-router-dom";
 
 const Admissions = () => {
   return (
@@ -46,13 +47,13 @@ const Admissions = () => {
             >
               <ol className="flex items-center space-x-2">
                 <li className="flex items-center">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
                   >
                     <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
                     <span className="font-medium">Home</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />

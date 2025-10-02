@@ -71,8 +71,8 @@ export default function TeachersSection() {
             Meet With Our <span className="text-orange-500">Teachers</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            It is a long established fact that a reader will be distracted by the readable
-            content of a page when looking at its layout.
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
           </p>
         </div>
 
@@ -84,7 +84,9 @@ export default function TeachersSection() {
               className="group relative overflow-hidden rounded-3xl transition-all duration-300"
             >
               {/* Main Card */}
-              <div className={`${teacher.bgColor} rounded-3xl p-4 pb-6 relative h-64 w-72 mx-auto`}>
+              <div
+                className={`${teacher.bgColor} rounded-3xl p-4 pb-6 relative h-64 w-72 mx-auto`}
+              >
                 {/* Profile Image */}
                 <div className="relative">
                   <img
@@ -92,29 +94,33 @@ export default function TeachersSection() {
                     alt={teacher.name}
                     className="w-38 h-38 rounded-full object-cover mx-auto mb-3 transition-transform duration-300 group-hover:scale-105"
                   />
-                  
+
                   {/* Social Media Icons - Hidden by default, shown on hover */}
                   <div className="absolute top-0 right-0 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                     <a
                       href={teacher.socialLinks.facebook}
+                      target="_blank"
                       className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
                     >
                       <Facebook className="w-3 h-3" />
                     </a>
                     <a
                       href={teacher.socialLinks.instagram}
+                      target="_blank"
                       className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
                     >
                       <Instagram className="w-3 h-3" />
                     </a>
                     <a
                       href={teacher.socialLinks.linkedin}
+                      target="_blank"
                       className="w-6 h-6 bg-blue-800 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
                     >
                       <Linkedin className="w-3 h-3" />
                     </a>
                     <a
                       href={teacher.socialLinks.youtube}
+                      target="_blank"
                       className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-200"
                     >
                       <Youtube className="w-3 h-3" />

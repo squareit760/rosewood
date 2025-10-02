@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BookOpen, Globe, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AboutHighlight = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -111,28 +112,26 @@ const AboutHighlight = () => {
 
             {/* Description */}
             <p className="text-gray-600 text-base leading-relaxed">
-              At Rosewood, we are more than just educators; we are mentors
-              fostering holistic growth. With a commitment to academic
-              excellence, our inspiring faculty guides students through
-              innovative programs, cultivating creativity and critical thinking.
-              Embracing a strong community spirit, we celebrate diversity and
-              camaraderie. As one of the Top Schools in Gonda, Rosewood College
-              is dedicated to nurturing well-rounded individuals. Join us on
-              this transformative journey, where education goes beyond
-              boundaries. Apply today and discover the Rosewood difference
+              At Rosewood International School, we are more than educators—we
+              are mentors committed to holistic growth. Our dedicated faculty
+              fosters academic excellence through innovative programs that
+              nurture creativity and critical thinking. Embracing a vibrant
+              community spirit, we celebrate diversity and camaraderie. As one
+              of the top schools in Gonda, Rosewood International School is
+              devoted to shaping well-rounded individuals. Join us on this
+              transformative journey, where education transcends boundaries.
+              Apply today and experience the Rosewood difference.
             </p>
-
-            
 
             {/* Bottom Section - all in one line */}
             <div className="flex flex-wrap items-center gap-4 pt-3">
               {/* Button */}
-              <a
-                href="/about-us"
+              <Link
+                to="/about-us"
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105 shadow-md"
               >
                 More About Us →
-              </a>
+              </Link>
 
               {/* Call Section */}
               <div className="flex items-center gap-3">

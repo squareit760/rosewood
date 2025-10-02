@@ -2,6 +2,7 @@ import { PhoneCall } from "lucide-react";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import Logo from "/images/logo.webp"; // Adjust the path as necessary
+import { Link } from "react-router-dom";
 
 const ThankYou = () => {
   return (
@@ -26,12 +27,12 @@ const ThankYou = () => {
         </p>
 
         {/* Back Button */}
-        <a
-          href="/"
+        <Link
+          to="/"
           className="inline-block mt-6 px-8 py-3 text-white font-semibold rounded-full bg-orange-500 shadow-md hover:bg-orange-600 transition-all duration-300"
         >
           Back To Home Page
-        </a>
+        </Link>
 
         {/* Contact Info */}
         <div className="mt-8 space-y-4">

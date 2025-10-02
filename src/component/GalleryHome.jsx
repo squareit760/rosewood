@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react"; // ✅ using lucide-react for arrow icon
+import { Link } from "react-router-dom";
 
 const GalleryHome = () => {
   const images = [
@@ -48,13 +49,13 @@ const GalleryHome = () => {
 
       {/* View All Button */}
       <div className="flex justify-center mt-12">
-        <a
-          href="/gallery" // 🔹 Replace with your actual gallery route
+        <Link
+          to="/gallery" // 🔹 Replace with your actual gallery route
           className="flex items-center gap-2 px-6 py-3 bg-orange-500 text-white font-semibold rounded-md shadow-md hover:bg-orange-600 transition-all duration-300"
         >
           View All 
           <ArrowRight className="w-5 h-5" />
-        </a>
+        </Link>
       </div>
     </section>
   );
