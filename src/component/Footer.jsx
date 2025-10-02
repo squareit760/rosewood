@@ -9,6 +9,8 @@ import {
   MessageCircle,
   Youtube,
 } from "lucide-react";
+import { BsInstagram } from "react-icons/bs";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export default function EdukaFooter() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -51,7 +53,21 @@ export default function EdukaFooter() {
                 <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-blue-100">+91 639 100 0692</span>
+                <a href="tel:+916391000692" className="text-blue-100">
+                  +91 63910 00692
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <a
+                  href="mailto:rosewoodinternationalschools@gmail.com"
+                  className="text-blue-100"
+                >
+                  rosewoodinternationalschools@gmail.com
+                </a>
               </div>
 
               <div className="flex items-center space-x-3">
@@ -61,13 +77,6 @@ export default function EdukaFooter() {
                 <span className="text-blue-100">
                   Lucknow Road, Balpur Jat - Gonda (U.P.)
                 </span>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-blue-100">rosewoodinternationalschools@gmail.com</span>
               </div>
             </div>
           </div>
@@ -173,35 +182,35 @@ export default function EdukaFooter() {
             {/* Copyright */}
             <div className="text-blue-200 text-center sm:text-left">
               © Copyright 2025{" "}
-              <span className="text-orange-400 font-semibold">rOsewd</span> All
-              Rights Reserved.
+              <span className="text-orange-400 font-semibold">Rosewood</span>{" "}
+              All Rights Reserved.
             </div>
 
             {/* Social Icons */}
             <div className="flex space-x-3">
               <a
-                href="#"
+                href="https://www.facebook.com/RosewoodInterCollege"
                 className="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"
               >
-                <Facebook className="w-5 h-5" />
+                <FaFacebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/rosewood_inter_college_gonda/"
                 className="w-10 h-10 bg-white/10 hover:bg-blue-700 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"
               >
-                <Linkedin className="w-5 h-5" />
+                <FaInstagram className="w-5 h-5" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"
               >
                 <MessageCircle className="w-5 h-5" />
-              </a>
+              </a> */}
               <a
-                href="#"
+                href="https://www.youtube.com/@rosewoodintercollegegonda1459"
                 className="w-10 h-10 bg-white/10 hover:bg-red-600 rounded-lg flex items-center justify-center text-white transition-all duration-200 transform hover:scale-110 hover:shadow-lg"
               >
-                <Youtube className="w-5 h-5" />
+                <FaYoutube className="w-5 h-5" />
               </a>
             </div>
           </div>

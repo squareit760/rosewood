@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Music, Gamepad2, Laptop, Bot, Library } from "lucide-react";
+import { Music, Gamepad2, Laptop, Bot, Library, Home, ChevronRight } from "lucide-react";
 import { GiRollerSkate } from "react-icons/gi";
 
 const Facilities = () => {
@@ -70,7 +70,7 @@ const Facilities = () => {
         <div className="absolute inset-0">
           <img
             src="/images/About.jpg"
-            alt="School Facilities"
+            alt="School Gallery"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50"></div>
@@ -78,18 +78,49 @@ const Facilities = () => {
 
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div
-            initial={{ opacity: 0, x: 150 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="text-center text-white px-6"
+            initial={{ opacity: 0, x: 100 }} // right side se start
+            animate={{ opacity: 1, x: 0 }} // beech me aa jaye
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8"
           >
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              Our <span className="text-orange-500">Facilities</span>
-            </h1>
-            <p className="text-gray-200 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">
-              We provide world-class facilities to ensure holistic growth,
-              creativity, and innovation among our students.
-            </p>
+            <div className="text-center mb-6 sm:mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
+                Facilities
+              </h1>
+              <div className="flex justify-center">
+                <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Breadcrumb */}
+            <nav
+              className="flex items-center space-x-2 text-sm sm:text-base"
+              aria-label="Breadcrumb"
+            >
+              <ol className="flex items-center space-x-2">
+                <li className="flex items-center">
+                  <a
+                    href="/"
+                    className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                    aria-label="Go to homepage"
+                  >
+                    <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="font-medium">Home</span>
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
+                </li>
+                <li className="flex items-center">
+                  <span
+                    className="text-orange-400 font-semibold"
+                    aria-current="page"
+                  >
+                    Facilities
+                  </span>
+                </li>
+              </ol>
+            </nav>
           </motion.div>
         </div>
       </section>

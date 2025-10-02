@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, GraduationCap, Users, BookOpen, DollarSign } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const BannerSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -134,7 +135,7 @@ const BannerSlider = () => {
   const currentBanner = bannerData[currentSlide];
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen lg:mt-6 mt-2 overflow-hidden">
       {/* Background Images with Transition */}
       {bannerData.map((banner, index) => (
         <div
@@ -169,7 +170,7 @@ const BannerSlider = () => {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="max-w-4xl text-left text-white">
+        <div className="max-w-full flex flex-col items-center text-left text-white">
           
           {/* Welcome Badge */}
           <div 
@@ -183,7 +184,7 @@ const BannerSlider = () => {
           {/* Main Title */}
           <div 
             key={`title-${animationKey}`}
-            className="mb-8 animate-[slideInRight_0.8s_ease-out_0.2s_both]"
+            className="mb-8  animate-[slideInRight_0.8s_ease-out_0.2s_both]"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2">
               {currentBanner.title}
@@ -196,7 +197,7 @@ const BannerSlider = () => {
           {/* Description */}
           <p 
             key={`desc-${animationKey}`}
-            className="text-gray-300 text-lg mb-8 max-w-2xl animate-[slideInRight_0.8s_ease-out_0.4s_both]"
+            className="text-gray-300 text-center text-lg mb-8 max-w-2xl animate-[slideInRight_0.8s_ease-out_0.4s_both]"
           >
             {currentBanner.description}
           </p>
@@ -206,12 +207,12 @@ const BannerSlider = () => {
             key={`buttons-${animationKey}`}
             className="flex flex-col sm:flex-row gap-4 mb-16 animate-[slideInRight_0.8s_ease-out_0.6s_both]"
           >
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
-              ABOUT MORE →
-            </button>
-            <button className="bg-transparent border-2 border-white border-opacity-50 hover:border-opacity-100 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:bg-opacity-10">
-              LEARN MORE →
-            </button>
+            <Link to="/contact" className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+              Contact Us →
+            </Link>
+            <Link to="/admissions" className="bg-transparent border-2 border-white border-opacity-50 hover:border-opacity-100 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-black cursor-pointer hover:bg-opacity-10">
+              How To Apply →
+            </Link>
           </div>
         </div>
 

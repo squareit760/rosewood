@@ -8,17 +8,13 @@ const Admissions = () => {
     <>
       {/* 🔹 Hero Section */}
       <section className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] w-full overflow-hidden">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/About.jpg')`, // apni admissions wali image ka path dalna
+            backgroundImage: `url('/images/About.jpg')`,
           }}
         >
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>
-
-          {/* Pattern Overlay */}
           <div className="absolute inset-0 opacity-10">
             <div
               className="w-full h-full"
@@ -30,7 +26,6 @@ const Admissions = () => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, x: 100 }}
@@ -39,13 +34,12 @@ const Admissions = () => {
             className="text-center"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              How To Apply
+             How To Apply
             </h1>
             <div className="flex justify-center mb-6">
               <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
             </div>
 
-            {/* Breadcrumb */}
             <nav
               className="flex items-center justify-center space-x-2 text-sm sm:text-base"
               aria-label="Breadcrumb"
@@ -77,40 +71,41 @@ const Admissions = () => {
         </div>
       </section>
 
-      {/* 🔹 How To Apply Section */}
+      {/* 🔹 Admissions / How To Apply Section */}
       <section className="py-16 px-6 lg:px-20 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+          {/* Left Side Content */}
           <div>
             <p className="text-orange-500 font-semibold uppercase flex items-center gap-2 mb-2">
-              <span className="text-lg">📑</span> How To Apply
+              <span className="text-lg">📋</span> Admissions Info
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug">
-              Details About{" "}
-              <span className="text-orange-500">How To Apply</span> rOsewd.
+              How to Join{" "}
+              <span className="text-orange-500">
+                Rosewood International School
+              </span>
             </h2>
             <p className="text-gray-600 mb-4">
-              There are many variations of passages available but the majority
-              have suffered alteration in some form by injected humour
-              randomised words which don’t look even slightly believable. If you
-              are going to use a passage you need sure there isn’t anything
-              embarrassing first true generator on the Internet.
+              Rosewood International School in Gonda is committed to nurturing
+              holistic growth, academic excellence, and character building. Our
+              admissions process is designed to be straightforward and
+              transparent.
             </p>
             <p className="text-gray-600 mb-6">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium veritatis et quasi architecto beatae vitae dicta sunt
-              explicabo.
+              We welcome students from early years through senior levels, and
+              encourage prospective families to review our offerings, values,
+              infrastructure, and academic philosophy before applying.
             </p>
 
             {/* Steps */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               {[
-                "Start Online Submission",
-                "Submit The Form",
-                "Review The Submission",
-                "Gather Necessary Documents",
-                "Interviewing Process",
-                "Last Decision",
+                "Obtain Application Form (Offline/Download PDF)",
+                "Submit Filled Form at Campus",
+                "Document Verification & Review",
+                "Attend Personal Interaction / Assessment",
+                "Final Admission Decision",
+                "Complete Admission Formalities",
               ].map((step, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
@@ -119,75 +114,68 @@ const Admissions = () => {
               ))}
             </div>
 
-            {/* Button */}
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all">
-              Apply Now →
-            </button>
+            {/* <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all">
+              Download Form / Visit Campus
+            </button> */}
           </div>
 
-          {/* Right Image */}
+          {/* Right Side Image */}
           <div className="relative">
             <img
-              src="/images/admission.jpg" 
-              alt="How To Apply"
+              src="/images/admission.jpg"
+              alt="Admissions at Rosewood International School"
               className="rounded-lg shadow-lg"
             />
           </div>
         </div>
 
-        {/* 🔹 Bottom Info Section */}
+        {/* 🔹 Additional Info Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
           <div>
-            <h3 className="text-2xl font-semibold mb-4">Things To Know First</h3>
+            <h3 className="text-2xl font-semibold mb-4">What to Know First</h3>
             <p className="text-gray-600 mb-3">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don’t look even
-              slightly believable.
+              At Rosewood International School, we emphasize that your child’s
+              development is as important as academic achievement. We strive for
+              balance between rigorous curriculum and fostering creativity,
+              values, leadership, and social responsibility.
             </p>
             <p className="text-gray-600">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using Content here making
-              it look like readable English.
+              We recommend that prospective families visit our campus, meet our
+              faculty, and understand the journey we offer—academically,
+              co-curricularly, and in student life.
             </p>
           </div>
 
           <div>
             <h3 className="text-2xl font-semibold mb-4">
-              Documents And Financial Aid
+              Required Documents & Policies
             </h3>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Sed ut
-                perspiciatis unde omnis iste natus error sit doloremque
-                laudantium.
+                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Birth
+                certificate (original + copy)
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Totam
-                rem aperiam eaque ipsa quae ab illo inventore veritatis.
+                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Previous
+                school report card / transfer certificate
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Nemo
-                enim ipsam voluptatem quia voluptas sit aspernatur aut odit.
+                <CheckCircle className="w-5 h-5 text-green-500 mt-1" />{" "}
+                Passport-size photographs
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Dolores
-                eos qui ratione voluptatem sequi nesciunt porro quisquam est.
+                <CheckCircle classsize="w-5 h-5 text-green-500 mt-1" /> Proof of
+                residence / address
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Adipisci
-                velit sed quia non numquam eius modi tempora incidunt.
+                <CheckCircle className="w-5 h-5 text-green-500 mt-1" /> Any
+                other academic or identity documents
               </li>
             </ul>
           </div>
         </div>
 
         <FAQSection />
-
-
-
       </section>
     </>
   );

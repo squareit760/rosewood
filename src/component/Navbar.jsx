@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Edit3,
 } from "lucide-react";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 let scrollListenersAdded = false;
 
@@ -48,7 +49,7 @@ const Navbar = () => {
     { name: "Home", path: "/", hasDropdown: false },
     {
       name: "About",
-      path: "/about-us",
+      path: "#",
       hasDropdown: true,
       dropdownItems: [
         { name: "About Us", path: "/about-us" },
@@ -84,22 +85,22 @@ const Navbar = () => {
               <span className="font-medium">Follow Us:</span>
               <div className="flex space-x-2">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/RosewoodInterCollege"
                   className="bg-teal-700 hover:bg-teal-800 p-1.5 rounded-full transition-colors"
                 >
-                  <Facebook size={14} />
+                  <FaFacebook size={14} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/rosewood_inter_college_gonda/"
                   className="bg-teal-700 hover:bg-teal-800 p-1.5 rounded-full transition-colors"
                 >
-                  <Instagram size={14} />
+                  <FaInstagram size={14} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.youtube.com/@rosewoodintercollegegonda1459"
                   className="bg-teal-700 hover:bg-teal-800 p-1.5 rounded-full transition-colors"
                 >
-                  <Youtube size={14} />
+                  <FaYoutube size={14} />
                 </a>
                 {/* <a href="#" className="bg-teal-700 hover:bg-teal-800 p-1.5 rounded-full transition-colors">
                   <MessageCircle size={14} />
@@ -119,7 +120,9 @@ const Navbar = () => {
               </div>
               <div className="hidden lg:flex items-center space-x-2">
                 <Mail size={16} className="text-yellow-300" />
-                <a href="mailto:rosewoodinternationalschools@gmail.com">rosewoodinternationalschools@gmail.com</a>
+                <a href="mailto:rosewoodinternationalschools@gmail.com">
+                  rosewoodinternationalschools@gmail.com
+                </a>
               </div>
               <div className="hidden lg:flex items-center space-x-2">
                 <Phone size={16} className="text-yellow-300" />
@@ -131,24 +134,21 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <div className={`fixed right-0 left-0 z-50 bg-white shadow-sm border-b border-gray-100 transition-all duration-300 ${
-        isScrolled ? "top-0" : "top-12"
-      }`} >
+      <div
+        className={`fixed right-0 left-0 z-50 bg-white shadow-sm border-b border-gray-100 transition-all duration-300 ${
+          isScrolled ? "top-0" : "top-12"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="bg-orange-400 p-2 rounded-lg relative">
-                  <div className="w-5 h-5 flex items-center justify-center">
-                    <div className="text-white text-sm font-bold">📖</div>
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-teal-600 rounded-full"></div>
-                </div>
-                <span className="text-3xl font-bold">
-                  <span className="text-teal-600">rOse</span>
-                  <span className="text-orange-400">wd</span>
-                </span>
+                <img
+                  src="/images/logo.webp"
+                  className="w-16 h-16 object-cover"
+                  alt=""
+                />
               </Link>
             </div>
 

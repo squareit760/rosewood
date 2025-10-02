@@ -7,6 +7,7 @@ import VisionMission from "../component/VisionMissionSection";
 import Testimonials from "../component/Testimonials";
 import TeachersSection from "../component/TeachersSection";
 import SchoolHistory from "../component/SchoolHistory";
+import WhyUs from "../component/whychooseus/WhyUs";
 
 export default function AboutUs() {
   return (
@@ -43,7 +44,7 @@ export default function AboutUs() {
           className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8"
         >
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
               About Us
             </h1>
             <div className="flex justify-center">
@@ -91,8 +92,9 @@ export default function AboutUs() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 pt-8 pb-4 text-center">
-        <h2 className="lg:text-5xl md:text-5xl text-3xl font-bold mb-6">
-          About Us
+        <h2 className="text-3xl md:text-4xl font-bold lg:mb-6 mb-3">
+          About
+          <span className="text-orange-500"> Us</span>
         </h2>
         <p className="text-gray-600 leading-relaxed max-w-7xl mx-auto text-base md:text-lg">
           Nestled in the heart of Gonda, Rosewood International School is a
@@ -100,17 +102,43 @@ export default function AboutUs() {
           top CBSE schools in the region, we offer a vibrant campus, dedicated
           faculty, and innovative programs that inspire students to discover
           their passions and achieve their highest potential. At Rosewood, we
-          are committed to nurturing well-rounded individuals prepared to excel
-          in an ever-changing world.
+          believe that every child is unique, with untapped potential waiting to
+          flourish. Our student-centric approach goes beyond textbooks,
+          fostering critical thinking, creativity, and emotional intelligence.
+          We create an environment where curiosity is celebrated, questions are
+          encouraged, and learning becomes a joyful journey of discovery. With
+          state-of-the-art facilities and a nurturing atmosphere, we provide
+          students with the tools and confidence to face tomorrow's challenges
+          with courage and conviction. Our commitment extends beyond
+          academics—we instill strong values, ethical responsibility, and a
+          spirit of compassion that prepares students to become responsible
+          global citizens. At Rosewood, we are committed to nurturing
+          well-rounded individuals prepared to excel in an ever-changing world.
+          Join us in shaping futures, building dreams, and creating leaders who
+          will make a meaningful difference in society.
         </p>
       </section>
 
+      <section className="py-16 px-6 bg-white">
+        {/* Heading */}
+        <div className="max-w-7xl mx-auto text-center ">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Why Choose
+            <span className="text-orange-500"> Us?</span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full mx-auto mt-4"></div>
+        </div>
+
+        {/* Content Grid */}
+        <WhyUs />
+      </section>
+
       {/* <AboutHighlights /> */}
-      <SchoolHistory />
+      {/* <SchoolHistory /> */}
       {/* <Testimonials /> */}
       {/* <VisionMission /> */}
       {/* <TeachersSection /> */}
-      <Counter />
+      {/* <Counter /> */}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Home } from "lucide-react";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -20,30 +20,31 @@ const Gallery = () => {
       title: "Science Laboratory",
       description: "Modern science lab with latest equipment",
     },
-    {
-      id: 3,
-      src: "/images/gal8.png",
-      title: "School Campus",
-      description: "Beautiful campus grounds and buildings",
-    },
+    // {
+    //   id: 3,
+    //   src: "/images/gal8.png",
+    //   title: "School Campus",
+    //   description: "Beautiful campus grounds and buildings",
+    // },
     {
       id: 4,
       src: "/images/gal5.png",
-      title: "Cultural Festival",
-      description: "Students performing traditional dance",
-    },
-    {
-      id: 5,
-      src: "/images/gal6.png",
       title: "Basketball Tournament",
       description: "Inter-house basketball championship",
     },
-    {
-      id: 6,
-      src: "/images/gal7.png",
-      title: "Graduation Ceremony",
-      description: "Class of 2024 graduation celebration",
-    },
+    // {
+    //   id: 5,
+    //   src: "/images/gal6.png",
+    // title: "Cultural Festival",
+    //   description: "Students performing traditional dance",
+
+    // },
+    // {
+    //   id: 6,
+    //   src: "/images/gal7.png",
+    //   title: "Graduation Ceremony",
+    //   description: "Class of 2024 graduation celebration",
+    // },
     {
       id: 7,
       src: "/images/gal9.jpg",
@@ -186,21 +187,49 @@ const Gallery = () => {
 
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div
-            initial={{ opacity: 0, x: 200 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="text-center text-white px-6"
+            initial={{ opacity: 0, x: 100 }} // right side se start
+            animate={{ opacity: 1, x: 0 }} // beech me aa jaye
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8"
           >
-            <p className="text-orange-400 font-semibold uppercase tracking-wide mb-2">
-              Explore Moments
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              Our <span className="text-orange-500">Gallery</span>
-            </h1>
-            <p className="text-gray-200 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">
-              A collection of cherished memories, events, and celebrations that
-              reflect the vibrant life of our school community.
-            </p>
+            <div className="text-center mb-6 sm:mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
+                Gallery
+              </h1>
+              <div className="flex justify-center">
+                <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Breadcrumb */}
+            <nav
+              className="flex items-center space-x-2 text-sm sm:text-base"
+              aria-label="Breadcrumb"
+            >
+              <ol className="flex items-center space-x-2">
+                <li className="flex items-center">
+                  <a
+                    href="/"
+                    className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                    aria-label="Go to homepage"
+                  >
+                    <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="font-medium">Home</span>
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
+                </li>
+                <li className="flex items-center">
+                  <span
+                    className="text-orange-400 font-semibold"
+                    aria-current="page"
+                  >
+                    Gallery
+                  </span>
+                </li>
+              </ol>
+            </nav>
           </motion.div>
         </div>
       </section>
@@ -234,13 +263,6 @@ const Gallery = () => {
                     alt={image.title}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h3 className="font-bold text-lg mb-1">{image.title}</h3>
-                    <p className="text-sm text-gray-200 line-clamp-2">
-                      {image.description}
-                    </p>
-                  </div>
                 </div>
               </div>
             ))}
@@ -287,7 +309,7 @@ const Gallery = () => {
               </div>
 
               {/* Image Info */}
-              <div className="p-6 bg-white">
+              {/* <div className="p-6 bg-white">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   {selectedImage.title}
                 </h2>
@@ -299,7 +321,7 @@ const Gallery = () => {
                     {currentImageIndex + 1} of {galleryImages.length}
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
