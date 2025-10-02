@@ -99,6 +99,7 @@ import { PhoneCall } from "lucide-react";
 import EnquiryFormPopup from "./component/EnquiryForm";
 import ScrollToTop from "./component/ScrollToTop";
 import ThankYou from "./pages/Thanks";
+import Login from "./pages/Admin/Login";
 
 // 👇 Layout wrapper to conditionally hide Navbar/Footer
 function Layout({ children }) {
@@ -154,6 +155,7 @@ function App() {
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/thanks" element={<ThankYou />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Layout>
       </Router>

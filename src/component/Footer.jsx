@@ -1,28 +1,45 @@
 import React, { useState } from "react";
-import {
-  Phone,
-  MapPin,
-  Mail,
-  Send,
-  Facebook,
-  Linkedin,
-  MessageCircle,
-  Youtube,
-} from "lucide-react";
-import { BsInstagram } from "react-icons/bs";
+import { Phone, MapPin, Mail, Send } from "lucide-react";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+
+// ✅ import Firebase + toast + navigation
+import { ref, push } from "firebase/database";
+import { database } from "../../firebase"; // adjust path if needed
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function EdukaFooter() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    if (form.name.trim() && form.email.trim() && form.message.trim()) {
-      console.log("Enquiry submitted:", form);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const entry = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      message: form.message.trim(),
+      timestamp: Date.now(),
+      source: "footer_form", // 👈 identify which form
+    };
+
+    if (!entry.name || !entry.email || !entry.message) {
+      toast.error("All fields are required!");
+      return;
+    }
+
+    try {
+      await push(ref(database, "footerEnquiries"), entry);
+      toast.success("Enquiry submitted successfully!");
       setForm({ name: "", email: "", message: "" });
+      navigate("/thanks");
+    } catch (error) {
+      console.error("Error submitting enquiry:", error);
+      toast.error("Error submitting enquiry. Please try again.");
     }
   };
 

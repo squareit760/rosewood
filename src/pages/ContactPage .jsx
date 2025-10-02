@@ -9,6 +9,10 @@ import {
   Home,
   ChevronRight,
 } from "lucide-react";
+import { ref, push } from "firebase/database";
+import { database } from "../../firebase"; // ✅ adjust import path if needed
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -18,8 +22,9 @@ const ContactPage = () => {
     message: "",
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,19 +58,33 @@ const ContactPage = () => {
     return newErrors;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const newErrors = validateForm();
+
     if (Object.keys(newErrors).length === 0) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      }, 3000);
+      setIsSubmitting(true);
+
+      const entry = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        message: formData.message.trim(),
+        timestamp: Date.now(),
+        source: "contact_page_form", // 👈 to identify submissions
+      };
+
+      try {
+        await push(ref(database, "contactEnquiries"), entry);
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        navigate("/thanks");
+      } catch (error) {
+        console.error("Error submitting message:", error);
+        toast.error("Error submitting form. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -76,12 +95,14 @@ const ContactPage = () => {
       icon: Phone,
       title: "Phone",
       details: ["+91 639 100 0692"],
+      href: "tel:+916391000692",
       color: "text-green-600",
     },
     {
       icon: Mail,
       title: "Email",
       details: ["rosewoodinternationalschools@gmail.com"],
+      href: "mailto:rosewoodinternationalschools@gmail.com",
       color: "text-blue-600",
     },
     {
@@ -195,12 +216,13 @@ const ContactPage = () => {
                           </h3>
                         </div>
                         {info.details.map((detail, idx) => (
-                          <p
+                          <a
+                            href={info.href}
                             key={idx}
                             className="text-gray-600 text-md break-words" // ✅ fixes overflow
                           >
                             {detail}
-                          </p>
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -245,7 +267,7 @@ const ContactPage = () => {
               </p>
             </div>
 
-            {isSubmitted && (
+            {isSubmitting && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
                 <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
                 <p className="text-green-700">
@@ -354,10 +376,10 @@ const ContactPage = () => {
               {/* Submit */}
               <button
                 onClick={handleSubmit}
-                disabled={isSubmitted}
+                disabled={isSubmitting}
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-green-600 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center"
               >
-                {isSubmitted ? (
+                {isSubmitting ? (
                   <>
                     <CheckCircle className="w-5 h-5 mr-2" />
                     Message Sent!
