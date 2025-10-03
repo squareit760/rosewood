@@ -135,7 +135,7 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <div
-        className={`fixed right-0 left-0 z-50 bg-white shadow-sm border-b border-gray-100 transition-all duration-300 ${
+        className={`fixed right-0 left-0 z-50 lg:mt-0 sm:mt-2 bg-white shadow-sm border-b border-gray-100 transition-all duration-300 ${
           isScrolled ? "top-0" : "top-12"
         }`}
       >
