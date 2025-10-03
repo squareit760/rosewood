@@ -20,8 +20,7 @@ const GalleryHome = () => {
           Our Photo <span className="text-orange-500">Gallery</span>
         </h2>
         <p className="text-gray-500 mt-2 max-w-xl mx-auto">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout.
+         "Our gallery captures the vibrant spirit of Rosewood International School. From academics to activities, explore the moments that make learning joyful."
         </p>
       </div>
 

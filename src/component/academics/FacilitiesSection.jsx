@@ -52,8 +52,7 @@ export default function FacilitiesSection({ limit }) {
           Let’s Check Our <span className="text-orange-500">Facilities</span>
         </h2>
         <p className="text-white mt-3">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout.
+         “Discover world-class facilities at Rosewood International School designed to nurture learning and growth.”
         </p>
       </div>
 
