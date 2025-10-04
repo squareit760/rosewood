@@ -84,7 +84,7 @@ const Enrollment = () => {
       }}
     >
       {/* Background overlay */}
-      <div className="absolute inset-0 bg-[#273F62]/50 bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-[#273F62]/80 bg-opacity-60"></div>
 
       <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
         <div className="grid lg:grid-cols-2 items-center gap-y-10 min-h-screen lg:min-h-0">
