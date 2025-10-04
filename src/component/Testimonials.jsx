@@ -79,16 +79,16 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-8 mb-10">
+    <div className="max-w-6xl mx-auto p-8 mb-8">
       {/* Section Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-2">
         <p className="text-orange-500 font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
           TESTIMONIALS
         </p>
         <h2 className="text-5xl font-bold">
           Voices Of <span className="text-orange-500">Trust</span>
         </h2>
-        <p className="text-gray-500 mt-2 max-w-xl mx-auto">
+        <p className="text-gray-500 mt-2">
           “See what our parents and students say about their journey with Rosewood International School.”
         </p>
       </div>

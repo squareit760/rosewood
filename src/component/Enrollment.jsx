@@ -76,15 +76,15 @@ const Enrollment = () => {
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden mt-12 mb-12"
+      className="min-h-[70vh] relative overflow-hidden mb-12"
       style={{
-        backgroundImage: 'url("/images/enroll.jpg")',
+        backgroundImage: 'url("/images/back-bg.webp")',
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Background overlay */}
-      <div className="absolute inset-0 bg-[#273F62]/90 bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-[#273F62]/50 bg-opacity-60"></div>
 
       <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
         <div className="grid lg:grid-cols-2 items-center gap-y-10 min-h-screen lg:min-h-0">

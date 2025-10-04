@@ -10,7 +10,7 @@ const GalleryHome = () => {
   ];
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-white mb-10">
       {/* Section Heading */}
       <div className="text-center mb-12">
         <p className="text-orange-500 font-semibold uppercase tracking-wider flex items-center justify-center gap-2">

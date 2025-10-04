@@ -29,13 +29,13 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="relative bg-blue-900 py-16 px-4 overflow-hidden">
+    <section className="relative bg-fixed py-16 px-4 overflow-hidden" 
+    style={{ backgroundImage: 'url("/images/choose-bg.webp")',
+       backgroundSize: 'cover',
+        backgroundPosition: 'center' }}
+    >
       {/* Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 border border-blue-800 rounded-full opacity-20 -translate-x-48 -translate-y-48"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 border border-blue-800 rounded-full opacity-20 translate-x-48 translate-y-48"></div>
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 border border-blue-800 rounded-full opacity-10 -translate-y-32"></div>
-      </div>
+      <div className="absolute bg-black/50 inset-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

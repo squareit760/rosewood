@@ -40,11 +40,19 @@ export default function FacilitiesSection({ limit }) {
   const displayedFacilities = limit ? facilities.slice(0, limit) : facilities;
 
   return (
-    <section className="py-12 bg-blue-900">
+    <section
+      className="py-12 bg-fixed relative"
+      style={{
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1647451963111-fc00cc4ae830?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHNjaG9vbCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/40"></div>
 
-      
       {/* Section Heading */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
+      <div className="text-center max-w-2xl mx-auto mb-12 relative z-10">
         <p className="text-[#f59e0b] font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
           🏫 Our Facilities
         </p>
@@ -52,12 +60,13 @@ export default function FacilitiesSection({ limit }) {
           Let’s Check Our <span className="text-orange-500">Facilities</span>
         </h2>
         <p className="text-white mt-3">
-         “Discover world-class facilities at Rosewood International School designed to nurture learning and growth.”
+          “Discover world-class facilities at Rosewood International School
+          designed to nurture learning and growth.”
         </p>
       </div>
 
       {/* Facilities Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 relative z-10">
         {displayedFacilities.map((facility, index) => (
           <div
             key={index}
@@ -83,7 +92,7 @@ export default function FacilitiesSection({ limit }) {
 
       {/* Show "View More" only if limited */}
       {limit && facilities.length > limit && (
-        <div className="text-center mt-10">
+        <div className="text-center mt-10 relative z-10">
           <a
             href="/academics/facilities"
             className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
