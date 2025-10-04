@@ -76,7 +76,7 @@ const Enrollment = () => {
 
   return (
     <div
-      className="min-h-[70vh] relative overflow-hidden mb-12"
+      className="min-h-[70vh] bg-fixed relative overflow-hidden mb-12"
       style={{
         backgroundImage: 'url("/images/back-bg.webp")',
         backgroundSize: "cover",
