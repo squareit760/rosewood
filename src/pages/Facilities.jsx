@@ -65,7 +65,7 @@ const Facilities = () => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       {/* 🔹 Banner Section */}
       <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
         <div className="absolute inset-0">

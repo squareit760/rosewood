@@ -135,7 +135,7 @@ const BannerSlider = () => {
   const currentBanner = bannerData[currentSlide];
 
   return (
-    <div className="relative w-full min-h-screen lg:mt-6 mt-2 overflow-hidden">
+    <div className="relative w-full min-h-screen lg:mt-6 mt-4 overflow-hidden">
       {/* Background Images with Transition */}
       {bannerData.map((banner, index) => (
         <div

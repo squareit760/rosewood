@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+
 import {
   Phone,
   Mail,
@@ -122,72 +124,62 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* 🔹 Banner Section */}
-      <section className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] w-full overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/About.jpg')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50"></div>
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: "20px 20px",
-              }}
-            ></div>
-          </div>
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/About.jpg"
+            alt="School Gallery"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4">
-              Contact Us
-            </h1>
-            <div className="flex justify-center">
-              <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
-            </div>
-          </div>
-
-          {/* Breadcrumb */}
-          <nav
-            className="flex items-center space-x-2 text-sm sm:text-base"
-            aria-label="Breadcrumb"
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }} // right side se start
+            animate={{ opacity: 1, x: 0 }} // beech me aa jaye
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8"
           >
-            <ol className="flex items-center space-x-2">
-              <li className="flex items-center">
-                <Link
-                  to="/"
-                  className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
-                  aria-label="Go to homepage"
-                >
-                  <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-medium">Home</span>
-                </Link>
-              </li>
-              <li className="flex items-center">
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
-              </li>
-              <li className="flex items-center">
-                <span
-                  className="text-orange-400 font-semibold"
-                  aria-current="page"
-                >
-                  Contact Us
-                </span>
-              </li>
-            </ol>
-          </nav>
-        </div>
+            <div className="text-center mb-6 sm:mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
+                Contact Us
+              </h1>
+              <div className="flex justify-center">
+                <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
+              </div>
+            </div>
 
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-60"></div>
-          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-ping opacity-40"></div>
-          <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-orange-300 rounded-full animate-pulse opacity-50 animation-delay-1000"></div>
+            {/* Breadcrumb */}
+            <nav
+              className="flex items-center space-x-2 text-sm sm:text-base"
+              aria-label="Breadcrumb"
+            >
+              <ol className="flex items-center space-x-2">
+                <li className="flex items-center">
+                  <Link
+                    to="/"
+                    className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                    aria-label="Go to homepage"
+                  >
+                    <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="font-medium">Home</span>
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
+                </li>
+                <li className="flex items-center">
+                  <span
+                    className="text-orange-400 font-semibold"
+                    aria-current="page"
+                  >
+                    Contact
+                  </span>
+                </li>
+              </ol>
+            </nav>
+          </motion.div>
         </div>
       </section>
       {/* 🔹 End Banner Section */}
@@ -241,8 +233,9 @@ const ContactPage = () => {
                 </h3>
               </div>
               <div className="relative h-64 md:h-80">
+                
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d80.3303!3d26.4499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z26LCq26LCq!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5971.67895449492!2d81.94100149271935!3d27.131689692805093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3999ef72447d929f%3A0xcb977401e34cf0e0!2sRosewood%20Inter%20College%20-%20Best%20Schools%20In%20Gonda%20%7C%20Top%2010%20Schools%20In%20Gonda%20%7C%20Schools%20In%20Gonda%20%7C%20CBSE%20Schools!5e0!3m2!1sen!2sin!4v1759562670337!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

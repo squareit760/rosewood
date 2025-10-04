@@ -8,69 +8,64 @@ const Admissions = () => {
   return (
     <>
       {/* 🔹 Hero Section */}
-      <section className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] w-full overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/About.jpg')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: "20px 20px",
-              }}
-            ></div>
-          </div>
-        </div>
-
-        <div className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-             How To Apply
-            </h1>
-            <div className="flex justify-center mb-6">
-              <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
-            </div>
-
-            <nav
-              className="flex items-center justify-center space-x-2 text-sm sm:text-base"
-              aria-label="Breadcrumb"
-            >
-              <ol className="flex items-center space-x-2">
-                <li className="flex items-center">
-                  <Link
-                    to="/"
-                    className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+              <div className="absolute inset-0">
+                <img
+                  src="/images/About.jpg"
+                  alt="School Gallery"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50"></div>
+              </div>
+      
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }} // right side se start
+                  animate={{ opacity: 1, x: 0 }} // beech me aa jaye
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="relative z-10 flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8"
+                >
+                  <div className="text-center mb-6 sm:mb-8">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
+                      How to Apply
+                    </h1>
+                    <div className="flex justify-center">
+                      <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
+                    </div>
+                  </div>
+      
+                  {/* Breadcrumb */}
+                  <nav
+                    className="flex items-center space-x-2 text-sm sm:text-base"
+                    aria-label="Breadcrumb"
                   >
-                    <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
-                    <span className="font-medium">Home</span>
-                  </Link>
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
-                </li>
-                <li className="flex items-center">
-                  <span
-                    className="text-orange-400 font-semibold"
-                    aria-current="page"
-                  >
-                    Admissions
-                  </span>
-                </li>
-              </ol>
-            </nav>
-          </motion.div>
-        </div>
-      </section>
+                    <ol className="flex items-center space-x-2">
+                      <li className="flex items-center">
+                        <Link
+                          to="/"
+                          className="group flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                          aria-label="Go to homepage"
+                        >
+                          <Home className="w-4 h-4 sm:w-5 sm:h-5 mr-1 group-hover:scale-110 transition-transform duration-200" />
+                          <span className="font-medium">Home</span>
+                        </Link>
+                      </li>
+                      <li className="flex items-center">
+                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
+                      </li>
+                      <li className="flex items-center">
+                        <span
+                          className="text-orange-400 font-semibold"
+                          aria-current="page"
+                        >
+                          Admission
+                        </span>
+                      </li>
+                    </ol>
+                  </nav>
+                </motion.div>
+              </div>
+            </section>
 
       {/* 🔹 Admissions / How To Apply Section */}
       <section className="py-16 px-6 lg:px-20 max-w-7xl mx-auto">

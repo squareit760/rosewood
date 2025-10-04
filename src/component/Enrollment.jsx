@@ -87,7 +87,7 @@ const Enrollment = () => {
       <div className="absolute inset-0 bg-[#273F62]/90 bg-opacity-60"></div>
 
       <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
-        <div className="grid lg:grid-cols-2 items-center min-h-screen lg:min-h-0">
+        <div className="grid lg:grid-cols-2 items-center gap-y-10 min-h-screen lg:min-h-0">
           {/* Left side - Enrollment Form */}
           <div className="flex justify-center">
             <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">

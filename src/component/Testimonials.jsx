@@ -89,7 +89,7 @@ const Testimonials = () => {
           Voices Of <span className="text-orange-500">Trust</span>
         </h2>
         <p className="text-gray-500 mt-2 max-w-xl mx-auto">
-          "“See what our parents and students say about their journey with Rosewood International School.”
+          “See what our parents and students say about their journey with Rosewood International School.”
         </p>
       </div>
 

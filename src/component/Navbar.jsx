@@ -214,38 +214,50 @@ const Navbar = () => {
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <div key={item.name}>
-                  <button
-                    onClick={() =>
-                      item.hasDropdown
-                        ? toggleDropdown(item.name)
-                        : setIsMobileMenuOpen(false)
-                    }
+                  {/* Button for main menu item */}
+                  <div
                     className={`flex items-center justify-between w-full px-4 py-3 text-left rounded-lg transition-colors ${
                       item.name === "Home"
                         ? "text-teal-600 bg-teal-50"
                         : "text-gray-700 hover:bg-gray-50 hover:text-teal-600"
                     }`}
                   >
-                    <Link to={item.path} className="w-full">
-                      {item.name}
-                    </Link>
-                    {item.hasDropdown && (
-                      <ChevronDown
-                        size={16}
-                        className={`transform transition-transform ${
-                          openDropdown === item.name ? "rotate-180" : ""
-                        }`}
-                      />
+                    {/* If it has no dropdown, clicking the link should close menu */}
+                    {!item.hasDropdown ? (
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="w-full"
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <>
+                        {/* If it has dropdown, clicking name toggles dropdown */}
+                        <button
+                          onClick={() => toggleDropdown(item.name)}
+                          className="flex justify-between w-full items-center"
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDown
+                            size={16}
+                            className={`transform transition-transform ${
+                              openDropdown === item.name ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                      </>
                     )}
-                  </button>
+                  </div>
 
-                  {/* Mobile Dropdown */}
+                  {/* Dropdown items */}
                   {item.hasDropdown && openDropdown === item.name && (
                     <div className="ml-4 mt-2 space-y-1">
                       {item.dropdownItems.map((drop) => (
                         <Link
                           key={drop.name}
                           to={drop.path}
+                          onClick={() => setIsMobileMenuOpen(false)} // close menu on click
                           className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-teal-600 rounded-lg"
                         >
                           {drop.name}
@@ -260,15 +272,17 @@ const Navbar = () => {
               <div className="pt-4 mt-4 border-t border-gray-100 space-y-3">
                 <div className="flex items-center space-x-3 text-sm text-gray-600">
                   <MapPin size={16} className="text-teal-600" />
-                  <span>25/B Milford Road, New York</span>
+                  <span>Lucknow Road, Balpur Jat - Gonda (U.P.)</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-gray-600">
                   <Mail size={16} className="text-teal-600" />
-                  <span>info@example.com</span>
+                  <a href="mailto:rosewoodinternationalschools@gmail.com">
+                    rosewoodinternationalschools@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-gray-600">
                   <Phone size={16} className="text-teal-600" />
-                  <span>+2 123 654 7898</span>
+                  <a href="tel:+916391000692">+91 639 100 0692</a>
                 </div>
               </div>
             </div>
