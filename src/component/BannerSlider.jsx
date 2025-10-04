@@ -86,17 +86,20 @@ const BannerSlider = () => {
         </div>
       ))}
 
-      {/* Navigation */}
+      {/* Left Arrow */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
+        className="absolute z-20 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full p-3 transition-all duration-300
+        left-1/4 bottom-6 md:left-6 md:top-1/2 md:-translate-y-1/2 md:bottom-auto"
       >
         <ChevronLeft className="w-6 h-6 text-black" />
       </button>
 
+      {/* Right Arrow */}
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
+        className="absolute z-20 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full p-3 transition-all duration-300
+        right-1/4 bottom-6 md:right-6 md:top-1/2 md:-translate-y-1/2 md:bottom-auto"
       >
         <ChevronRight className="w-6 h-6 text-black" />
       </button>
