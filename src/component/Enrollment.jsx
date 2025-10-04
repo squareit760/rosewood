@@ -1,77 +1,78 @@
 import React, { useState } from "react";
-import { database } from "../../firebase"; // Make sure firebase is correctly initialized
-import { ref, push, serverTimestamp } from "firebase/database";
+import { database } from "../../firebase";
+import { ref, push } from "firebase/database"; // ✅ we’ll use push() with Date.now() instead of serverTimestamp
+import { useNavigate } from "react-router-dom";
 
 const Enrollment = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    course: "",
-    message: "",
-  });
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      message: "",
+    });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate(); 
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    if (errors[name]) {
-      setErrors((prev) => ({
+    // ✅ handle input changes
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
         ...prev,
-        [name]: "",
+        [name]: value,
       }));
-    }
-  };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    return newErrors;
-  };
+      if (errors[name]) {
+        setErrors((prev) => ({
+          ...prev,
+          [name]: "",
+        }));
+      }
+    };
 
-  const handleSubmit = async () => {
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+    // ✅ validation
+    const validateForm = () => {
+      const newErrors = {};
+      if (!formData.name.trim()) newErrors.name = "Name is required";
+      if (!formData.email.trim()) {
+        newErrors.email = "Email is required";
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Email is invalid";
+      }
+      if (!formData.message.trim()) newErrors.message = "Message is required";
+      return newErrors;
+    };
 
-    try {
-      // Push to Firebase under "enrollmentEnquiries"
-      const dbRef = ref(database, "enrollmentEnquiries");
-      await push(dbRef, {
-        name: formData.name,
-        email: formData.email,
-        course: formData.course || "N/A",
-        message: formData.message,
+    // ✅ form submit
+    const handleSubmit = async () => {
+      const newErrors = validateForm();
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+      }
+
+      const entry = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
         source: "enrollment_form",
-        timestamp: serverTimestamp(),
-      });
+        timestamp: Date.now(),
+      };
 
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        course: "",
-        message: "",
-      });
+      try {
+        await push(ref(database, "enrollmentEnquiries"), entry);
 
-      setTimeout(() => setIsSubmitted(false), 3000);
-    } catch (error) {
-      console.error("Form submission failed:", error);
-    }
-  };
+        // ✅ show success + reset form
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+
+        // ✅ redirect to thanks page
+        navigate("/thanks");
+      } catch (error) {
+        console.error("Error submitting enrollment:", error);
+        alert("Error submitting form. Please try again.");
+      }
+    };
 
   return (
     <div
@@ -133,22 +134,6 @@ const Enrollment = () => {
                     <p className="text-red-600 text-sm mt-1">{errors.email}</p>
                   )}
                 </div>
-
-                {/* Optional Course Field */}
-                {/* <div>
-                  <select
-                    name="course"
-                    value={formData.course}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:bg-white focus:ring-2 focus:ring-orange-400 focus:outline-none transition-all duration-200 appearance-none cursor-pointer"
-                  >
-                    <option value="">Choose Course</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="graphic-design">Graphic Design</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="data-science">Data Science</option>
-                  </select>
-                </div> */}
 
                 <div>
                   <textarea

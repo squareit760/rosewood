@@ -15,7 +15,6 @@ import VisionMission from "./pages/VisionMission";
 import Sports from "./pages/Sports";
 import { FaWhatsapp } from "react-icons/fa";
 import { PhoneCall } from "lucide-react";
-import EnquiryFormPopup from "./component/EnquiryForm";
 import ScrollToTop from "./component/ScrollToTop";
 import ThankYou from "./pages/Thanks";
 import Login from "./pages/Admin/Login";
@@ -79,7 +78,6 @@ function App() {
             />
 
           </Routes>
-          <EnquiryFormPopup />
       </Router>
     </>
   );

@@ -13,39 +13,60 @@ const Dashboard = () => {
       if (!user) navigate("/login");
     });
 
-    const fetchData = async () => {
-      const sources = ["popupEnquiries", "footerEnquiries", "contactEnquiries"];
-      const allData = [];
+    const sources = [
+      "popupEnquiries",
+      "footerEnquiries",
+      "contactEnquiries",
+      "enrollmentEnquiries",
+    ];
 
-      sources.forEach((source) => {
-        const dbRef = ref(database, source);
-        onValue(dbRef, (snapshot) => {
-          const records = snapshot.val();
-          if (records) {
-            const formatted = Object.entries(records).map(([id, values]) => ({
-              id,
-              source: source.replace("Enquiries", ""), // popup, footer, contact
-              message: values.message || "N/A", // handle missing message
-              name: values.name || "N/A",
-              email: values.email || "N/A",
-              mobile: values.mobile || values.phone || "N/A",
-              timestamp: values.timestamp || 0,
-            }));
-            setData((prev) => {
-              // Merge new entries and remove duplicates
-              const merged = [
-                ...prev.filter((d) => d.source !== source),
-                ...formatted,
-              ];
-              return merged.sort((a, b) => b.timestamp - a.timestamp);
-            });
-          }
+    const listeners = [];
+
+    sources.forEach((source) => {
+      const dbRef = ref(database, source);
+      const unsubscribeListener = onValue(dbRef, (snapshot) => {
+        const records = snapshot.val();
+        let newData = [];
+
+        if (records) {
+          newData = Object.entries(records).map(([id, values]) => ({
+            id,
+            source: source.replace("Enquiries", ""), // popup, footer, contact, enrollment
+            message: values.message || "N/A",
+            name: values.name || "N/A",
+            email: values.email || "N/A",
+            mobile: values.mobile || values.phone || "N/A",
+            timestamp: values.timestamp || 0,
+          }));
+        }
+
+        setData((prev) => {
+          // merge previous + new
+          const combined = [
+            ...prev.filter((d) => d.source !== source),
+            ...newData,
+          ];
+
+          // remove duplicates (unique key = id + source)
+          const unique = Object.values(
+            combined.reduce((acc, item) => {
+              acc[item.source + item.id] = item;
+              return acc;
+            }, {})
+          );
+
+          // sort by timestamp DESC
+          return unique.sort((a, b) => b.timestamp - a.timestamp);
         });
       });
-    };
 
-    fetchData();
-    return () => unsubscribe();
+      listeners.push(unsubscribeListener);
+    });
+
+    return () => {
+      listeners.forEach((unsub) => unsub());
+      unsubscribe();
+    };
   }, [navigate]);
 
   const handleLogout = async () => {
@@ -57,48 +78,19 @@ const Dashboard = () => {
     }
   };
 
-  const logToGoogleSheet = async (entry) => {
-    const sheetURL =
-      "https://script.google.com/macros/s/AKfycbxY8vgBQyds6j_CoRHjhqAB3givsZx9HQNr_brW3LnsOFsChhq07dGC2P-32WXcsV5X/exec";
-
-    const payload = {
-      name: entry.name,
-      email: entry.email,
-      mobile: entry.mobile,
-      id: entry.id,
-      status: "Deleted by admin",
-      source: entry.source,
-    };
-
-    try {
-      await fetch(sheetURL, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("Logged deletion to Google Sheet ✅");
-    } catch (error) {
-      console.error("Google Sheet logging failed ❌", error);
-    }
-  };
-
-  const handleDelete = async (entryId) => {
+  const handleDelete = async (entryId, source) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this record?"
     );
     if (!confirmDelete) return;
 
-    const deletedEntry = data.find((item) => item.id === entryId);
-    if (!deletedEntry) return;
-
     try {
-      await logToGoogleSheet(deletedEntry);
-      await remove(ref(database, `${deletedEntry.source}Enquiries/${entryId}`));
-      setData((prev) => prev.filter((item) => item.id !== entryId));
+      await remove(ref(database, `${source}Enquiries/${entryId}`));
+      setData((prev) =>
+        prev.filter((item) => !(item.id === entryId && item.source === source))
+      );
     } catch (error) {
-      console.error("Failed to delete entry or log:", error.message);
+      console.error("Failed to delete entry:", error.message);
     }
   };
 
@@ -133,7 +125,7 @@ const Dashboard = () => {
             </thead>
             <tbody className="divide-y divide-gray-200">
               {data.map((entry, index) => (
-                <tr key={entry.id}>
+                <tr key={entry.source + entry.id}>
                   <td className="px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">{entry.name}</td>
                   <td className="px-4 py-2">{entry.email}</td>
@@ -147,7 +139,7 @@ const Dashboard = () => {
                   </td>
                   <td className="px-4 py-2">
                     <button
-                      onClick={() => handleDelete(entry.id)}
+                      onClick={() => handleDelete(entry.id, entry.source)}
                       className="px-3 py-1 cursor-pointer bg-red-500 text-white rounded hover:bg-red-600 text-xs"
                     >
                       Delete
