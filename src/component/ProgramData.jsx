@@ -7,7 +7,7 @@ export default function CourseData() {
       title: "Blooming Buds (Playgroup) ",
       description: "Foundation of curiosity & fun learning.",
       image:
-        "https://media.istockphoto.com/id/2150364938/photo/reading-is-fun.jpg?s=612x612&w=0&k=20&c=0Xk20ZPtD5cgoAcD2IFQgn-Fq5IvCd2vHNsLqELcx00=", // ✅ Random Image
+        "/images/Data1.jpeg",
       category: "Drama",
       categoryColor: "bg-orange-500",
       lessons: 10,
@@ -21,7 +21,7 @@ export default function CourseData() {
       title: "Exploration Stage",
       description: "Hands-on learning, creativity      .",
       image:
-        "https://img.freepik.com/free-photo/happy-kids-elementary-school_53876-138141.jpg",
+        "/images/Data2.jpg",
       category: "Design",
       categoryColor: "bg-yellow-500",
       lessons: 10,

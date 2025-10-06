@@ -74,8 +74,9 @@ export default function EnquiryFormPopup() {
              </div>
 
              <div className="flex justify-between items-center mb-4">
-               <h2 className="text-lg font-bold" style={{ color: "#009689" }}>
-                 EXPRESS YOUR INTEREST
+               <h2 className="text-md font-bold" style={{ color: "#009689" }}>
+                 Welcome to Rosewood International School.
+                 Express Your Interest in Admission Today!
                </h2>
                <button onClick={() => setShowForm(false)}>
                  <X className="text-red-600 absolute top-2 right-2 cursor-pointer w-5 h-5" />

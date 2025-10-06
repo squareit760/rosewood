@@ -7,7 +7,7 @@ export default function FacilitiesSection({ limit }) {
     {
       title: "Smart Classrooms",
       desc: "Digital smart boards and interactive tools make lessons engaging and fun. Technology-driven learning enhances understanding and interest in every subject.",
-      img: "/images/Classroom.jpg",
+      img: "/images/class.webp",
     },
     {
       title: "Safe Transport",
@@ -17,7 +17,7 @@ export default function FacilitiesSection({ limit }) {
     {
       title: "Science & Computer Labs",
       desc: "quipped with modern tools and technology, our labs make learning practical and interactive. Students explore, experiment, and innovate with hands-on experiences.",
-      img: "/images/com-sci.jpg",
+      img: "/images/com-sci1.jpeg",
     },
     {
       title: "Transport Facility",
