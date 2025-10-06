@@ -10,7 +10,7 @@ const Facilities = () => {
       title: "Smart / Digital Classroom",
       description:
         "Digital smart boards and interactive tools make lessons engaging and fun. Technology-driven learning enhances understanding and interest in every subject.",
-      image: "/images/F1.jpg",
+      image: "/images/class.webp",
       icon: <Laptop className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: false,
     },
@@ -18,7 +18,7 @@ const Facilities = () => {
       title: "Music & Dance",
       description:
         "Students explore rhythm, melody, and movement through structured music and dance sessions. These activities enhance creativity, confidence, and cultural appreciation.",
-      image: "/images/Dance.jpg",
+      image: "/images/dance2.jpg",
       icon: <Music className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: true,
     },
@@ -42,7 +42,7 @@ const Facilities = () => {
       title: "Computer Lab",
       description:
         "Our hi-tech Computer Lab offers the latest systems with advanced software, enhancing technological skills through hands-on practical learning.",
-      image: "/images/computer-lab.jpg",
+      image: "/images/com-sci1.jpeg",
       icon: <Laptop className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: false,
     },
