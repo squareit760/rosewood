@@ -156,7 +156,7 @@ import { Link } from "react-router-dom";
           >
             <div className="text-center mb-6 sm:mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-4">
-                Sports & Actvities
+                Sports & Activities
               </h1>
               <div className="flex justify-center">
                 <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
