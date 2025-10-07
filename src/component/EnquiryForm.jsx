@@ -73,11 +73,13 @@ export default function EnquiryFormPopup() {
                />
              </div>
 
-             <div className="flex justify-between items-center mb-4">
-               <h2 className="text-md font-bold" style={{ color: "#009689" }}>
+             <div className="flex justify-center items-center mb-4">
+              <div className="flex flex-col items-center gap-y-1">
+               <h2 className="text-md font-normal" style={{ color: "#009689" }}>
                  Welcome to Rosewood International School.
-                 Express Your Interest in Admission Today!
                </h2>
+               <span className="text-sm text-red-500">"Unlock your child’s potential. Connect with us today!"</span>
+              </div>
                <button onClick={() => setShowForm(false)}>
                  <X className="text-red-600 absolute top-2 right-2 cursor-pointer w-5 h-5" />
                </button>
