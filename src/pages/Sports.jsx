@@ -107,7 +107,7 @@ import { Link } from "react-router-dom";
         "Volleyball is an exciting way to stay fit and energized every day.",
         "Promotes teamwork and communication skills.",
       ],
-      image: "/images/Volleyball.jpeg",
+      image: "/images/Volleyball.jpg",
     },
   ];
 

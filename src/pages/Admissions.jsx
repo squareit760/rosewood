@@ -118,7 +118,7 @@ const Admissions = () => {
           {/* Right Side Image */}
           <div className="relative">
             <img
-              src="/images/admission.jpg"
+              src="/images/apply.jpg"
               alt="Admissions at Rosewood International School"
               className="rounded-lg shadow-lg"
             />

@@ -50,7 +50,7 @@ const Facilities = () => {
       title: "Robotic Lab",
       description:
         "Hands-on robotics sessions foster innovation, problem-solving, and technical skills. Students design, build, and program robots for practical learning.",
-      image: "/images/Robotic-lab.jpg",
+      image: "/images/robotic.webp",
       icon: <Bot className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: true,
     },
@@ -58,7 +58,7 @@ const Facilities = () => {
       title: "Digital Library",
       description:
         "State-of-the-art digital library provides vast e-resources, journals, and research material. Students enhance their knowledge and digital literacy for the future.",
-      image: "/images/Digital-Library.jpg",
+      image: "/images/digital.webp",
       icon: <Library className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: false,
     },

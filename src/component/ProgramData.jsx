@@ -35,7 +35,7 @@ export default function CourseData() {
       title: "Sublime Stage",
       description: "Academic excellence + leadership.",
       image:
-        "https://media.istockphoto.com/id/918576744/photo/education-is-the-key-to-our-future.jpg?s=612x612&w=0&k=20&c=meW955zYtlkMr0UWDSIOICtvJX7IKt-uKiudTrbljJQ=",
+        "/images/sublim.webp",
       category: "Science",
       categoryColor: "bg-blue-500",
       lessons: 10,

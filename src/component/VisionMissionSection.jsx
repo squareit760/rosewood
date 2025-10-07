@@ -14,13 +14,13 @@ const VisionMissionSection = () => {
         >
           {/* Image */}
           <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800"
+            src="/images/vission.jpeg"
             alt="Vision"
-            className="w-full md:w-1/2 rounded-2xl shadow-lg object-cover"
+            className="w-full md:w-1/3 rounded-2xl shadow-lg object-cover"
           />
           {/* Content */}
           <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 mt-7">
               Our <span className="text-orange-500">Vision</span>
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4">
@@ -84,9 +84,9 @@ const VisionMissionSection = () => {
           </div>
           {/* Image */}
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
+            src="/images/mission.jpg"
             alt="Mission"
-            className="w-full md:w-1/2 rounded-2xl shadow-lg object-cover"
+            className="w-full md:w-1/3 rounded-2xl shadow-lg object-cover"
           />
         </motion.div>
       </div>
