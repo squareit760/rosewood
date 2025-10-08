@@ -207,15 +207,20 @@ const ContactPage = () => {
                             {info.title}
                           </h3>
                         </div>
-                        {info.details.map((detail, idx) => (
-                          <a
-                            href={info.href}
-                            key={idx}
-                            className="text-gray-600 text-md break-words" // ✅ fixes overflow
-                          >
-                            {detail}
-                          </a>
-                        ))}
+                        {info.details.map((detail, idx) => {
+  const formattedDetail = detail.includes("@")
+    ? detail.replace("@", "<wbr/>@")
+    : detail;
+  return (
+    <a
+      href={info.href}
+      key={idx}
+      className="text-gray-600 text-md break-words"
+      dangerouslySetInnerHTML={{ __html: formattedDetail }}
+    />
+  );
+})}
+
                       </div>
                     </div>
                     <div className=""></div>
