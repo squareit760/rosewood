@@ -272,7 +272,7 @@ const Gallery = () => {
 
         {/* Modal */}
         {selectedImage && (
-          <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
             <div className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-lg overflow-hidden">
               {/* Close Button */}
               <button
@@ -305,7 +305,7 @@ const Gallery = () => {
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.title}
-                  className="w-full h-96 md:h-[70vh] object-cover"
+                  className="w-full h-96 md:h-[70vh] object-contain"
                 />
               </div>
 

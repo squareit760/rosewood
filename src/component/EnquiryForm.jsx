@@ -78,7 +78,7 @@ export default function EnquiryFormPopup() {
                <h2 className="text-md font-normal" style={{ color: "#009689" }}>
                  Welcome to Rosewood International School.
                </h2>
-               <span className="text-sm text-red-500">"Unlock your child’s potential. Connect with us today!"</span>
+               <span className="text-sm text-red-500 lg:text-start text-center">"Unlock your child’s potential. Connect with us today!"</span>
               </div>
                <button onClick={() => setShowForm(false)}>
                  <X className="text-red-600 absolute top-2 right-2 cursor-pointer w-5 h-5" />

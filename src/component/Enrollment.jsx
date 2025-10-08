@@ -2,77 +2,78 @@ import React, { useState } from "react";
 import { database } from "../../firebase";
 import { ref, push } from "firebase/database"; // ✅ we’ll use push() with Date.now() instead of serverTimestamp
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Enrollment = () => {
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      message: "",
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [errors, setErrors] = useState({});
-    const navigate = useNavigate(); 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
-    // ✅ handle input changes
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({
+  // ✅ handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({
         ...prev,
-        [name]: value,
+        [name]: "",
       }));
+    }
+  };
 
-      if (errors[name]) {
-        setErrors((prev) => ({
-          ...prev,
-          [name]: "",
-        }));
-      }
+  // ✅ validation
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
+  // ✅ form submit
+  const handleSubmit = async () => {
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    const entry = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+      source: "enrollment_form",
+      timestamp: Date.now(),
     };
 
-    // ✅ validation
-    const validateForm = () => {
-      const newErrors = {};
-      if (!formData.name.trim()) newErrors.name = "Name is required";
-      if (!formData.email.trim()) {
-        newErrors.email = "Email is required";
-      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "Email is invalid";
-      }
-      if (!formData.message.trim()) newErrors.message = "Message is required";
-      return newErrors;
-    };
+    try {
+      await push(ref(database, "enrollmentEnquiries"), entry);
 
-    // ✅ form submit
-    const handleSubmit = async () => {
-      const newErrors = validateForm();
-      if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-        return;
-      }
+      // ✅ show success + reset form
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
 
-      const entry = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim(),
-        source: "enrollment_form",
-        timestamp: Date.now(),
-      };
-
-      try {
-        await push(ref(database, "enrollmentEnquiries"), entry);
-
-        // ✅ show success + reset form
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-
-        // ✅ redirect to thanks page
-        navigate("/thanks");
-      } catch (error) {
-        console.error("Error submitting enrollment:", error);
-        alert("Error submitting form. Please try again.");
-      }
-    };
+      // ✅ redirect to thanks page
+      navigate("/thanks");
+    } catch (error) {
+      console.error("Error submitting enrollment:", error);
+      alert("Error submitting form. Please try again.");
+    }
+  };
 
   return (
     <div
@@ -230,9 +231,14 @@ const Enrollment = () => {
               </div>
             </div>
 
-            <button className="bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold py-3 px-8 rounded-lg hover:from-orange-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-              LEARN MORE →
-            </button>
+            <Link to="/about-us">
+              <button
+                type="button"
+                className="bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold py-3 px-8 rounded-lg hover:from-orange-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                LEARN MORE →
+              </button>
+            </Link>
           </div>
         </div>
       </div>

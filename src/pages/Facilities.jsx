@@ -58,7 +58,7 @@ const Facilities = () => {
       title: "Digital Library",
       description:
         "State-of-the-art digital library provides vast e-resources, journals, and research material. Students enhance their knowledge and digital literacy for the future.",
-      image: "/images/digital.webp",
+      image: "/images/library2.jpggit ",
       icon: <Library className="w-12 h-12 text-orange-500 mb-4" />,
       reverse: false,
     },
