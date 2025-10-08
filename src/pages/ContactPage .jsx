@@ -185,11 +185,11 @@ const ContactPage = () => {
       {/* 🔹 End Banner Section */}
 
       {/* 🔹 Contact Info + Form Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16  ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column - Contact Info */}
           <div className="space-y-8">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-16">
               {contactInfo.map((info, index) => {
                 const IconComponent = info.icon;
                 return (
@@ -208,19 +208,20 @@ const ContactPage = () => {
                           </h3>
                         </div>
                         {info.details.map((detail, idx) => {
-  const formattedDetail = detail.includes("@")
-    ? detail.replace("@", "<wbr/>@")
-    : detail;
-  return (
-    <a
-      href={info.href}
-      key={idx}
-      className="text-gray-600 text-md break-words"
-      dangerouslySetInnerHTML={{ __html: formattedDetail }}
-    />
-  );
-})}
-
+                          const formattedDetail = detail.includes("@")
+                            ? detail.replace("@", "<wbr/>@")
+                            : detail;
+                          return (
+                            <a
+                              href={info.href}
+                              key={idx}
+                              className="text-gray-600 text-md break-words"
+                              dangerouslySetInnerHTML={{
+                                __html: formattedDetail,
+                              }}
+                            />
+                          );
+                        })}
                       </div>
                     </div>
                     <div className=""></div>
@@ -230,7 +231,7 @@ const ContactPage = () => {
             </div>
 
             {/* Google Map */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            {/* <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="p-4 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                   <MapPin className="w-5 h-5 text-red-600 mr-2" />
@@ -238,7 +239,6 @@ const ContactPage = () => {
                 </h3>
               </div>
               <div className="relative h-64 md:h-80">
-                
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5971.67895449492!2d81.94100149271935!3d27.131689692805093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3999ef72447d929f%3A0xcb977401e34cf0e0!2sRosewood%20Inter%20College%20-%20Best%20Schools%20In%20Gonda%20%7C%20Top%2010%20Schools%20In%20Gonda%20%7C%20Schools%20In%20Gonda%20%7C%20CBSE%20Schools!5e0!3m2!1sen!2sin!4v1759562670337!5m2!1sen!2sin"
                   width="100%"
@@ -250,7 +250,7 @@ const ContactPage = () => {
                   className="absolute inset-0"
                 ></iframe>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column - Form */}
