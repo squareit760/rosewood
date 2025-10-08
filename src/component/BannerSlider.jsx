@@ -16,7 +16,7 @@ const BannerSlider = () => {
   const bannerData = [
     {
       id: 1,
-      backgroundImage: "/images/slider-1.jpg",
+      backgroundImage: "/images/banner-1.webp",
       title: "Nurturing Young Minds,",
       highlight: "Inspiring",
       subtitle: "Bright Futures",
@@ -25,22 +25,22 @@ const BannerSlider = () => {
     },
     {
       id: 2,
-      backgroundImage: "/images/slider-2.jpg",
+      backgroundImage: "/images/banner-2.webp",
       title: "Where Education Meets",
       highlight: "Values",
       subtitle: "and Excellence",
       description:
         "Dedicated to holistic development — empowering students with strong academics, discipline, and a sense of responsibility.",
     },
-    {
-      id: 3,
-      backgroundImage: "/images/slider-3.jpg",
-      title: "Building Character,",
-      highlight: "Confidence,",
-      subtitle: "and Creativity",
-      description:
-        "A place for every learner to explore, discover, and shine — preparing them to lead tomorrow with knowledge and kindness.",
-    },
+    // {
+    //   id: 3,
+    //   backgroundImage: "/images/slider-3.jpg",
+    //   title: "Building Character,",
+    //   highlight: "Confidence,",
+    //   subtitle: "and Creativity",
+    //   description:
+    //     "A place for every learner to explore, discover, and shine — preparing them to lead tomorrow with knowledge and kindness.",
+    // },
   ];
 
   const nextSlide = () => {
@@ -80,7 +80,7 @@ const BannerSlider = () => {
           <img
             src={banner.backgroundImage}
             alt={`Banner ${index + 1}`}
-            className="w-full h-full object-cover"
+            className="w-full object-cover"
           />
           <div className="absolute inset-0 bg-green-900/70 bg-opacity-60"></div>
         </div>
